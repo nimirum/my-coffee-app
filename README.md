@@ -4,7 +4,7 @@ Simple application to list your favourite coffees.
 
 **Frontend:** React with TypeScript
 
-**Backend:** Express and LowDB with TypeScript
+**Backend:** Express and MongoDB with TypeScript
 
 
 
@@ -34,7 +34,13 @@ Install NVM dependencies
 npm run install
 ```
 
-Run the app
+Install frontend NVM dependencies
+```bash 
+cd client
+npm run install
+```
+
+Run the app in the root folder
 
 ```bash 
 npm run dev

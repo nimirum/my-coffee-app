@@ -12,8 +12,6 @@ interface CoffeeModelInterface extends mongoose.Model<CoffeeDoc> {
 }
 
 interface CoffeeDoc extends mongoose.Document {
-    title: string;
-    description: string;
 }
 
 const coffeeSchema = new mongoose.Schema({
