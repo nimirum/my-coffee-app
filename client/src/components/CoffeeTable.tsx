@@ -1,40 +1,43 @@
-import React from 'react'
-import { Coffee } from '../types'
+import React, {FC} from "react";
+import { Table } from "react-bootstrap";
+import { Coffee } from "../types";
 
-export const CoffeeTable = ({coffees}: any) => {
+interface TableProps {
+    coffees: [];
+  };
 
-    if (coffees.length === 0) return null
+const CoffeeTable: FC<TableProps> = ({ coffees }: any) => {
+  if (coffees.length === 0) return null;
 
-    const CoffeeRow = (coffee: Coffee) => {
+  const CoffeeRow = (coffee: Coffee) => {
+    return (
+      <tr key={coffee._id}>
+        <td>{coffee.name}</td>
+        <td>{coffee.weight}</td>
+        <td>{coffee.price}</td>
+        <td>{coffee.roast}</td>
+      </tr>
+    );
+  };
 
-        return(
-              <tr key={coffee._id}>
-                  <td>{coffee.name}</td>
-                  <td>{coffee.weight}</td>
-                  <td>{coffee.price}</td>
-                  <td>{coffee.roast}</td>
-              </tr>
-          )
-    }
+  const coffeeTable = coffees.map((coffee: Coffee) => CoffeeRow(coffee));
 
-    const coffeeTable = coffees.map((coffee: Coffee) => CoffeeRow(coffee))
+  return (
+    <div>
+      <h2>Favourite Coffees</h2>
+      <Table hover>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Weight (g)</th>
+            <th>Price (€)</th>
+            <th>Roast</th>
+          </tr>
+        </thead>
+        <tbody>{coffeeTable}</tbody>
+      </Table>
+    </div>
+  );
+};
 
-    return(
-        <div>
-            <h2>Favourite Coffees</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Weight (g)</th>
-                    <th>Price (€)</th>
-                    <th>Roast</th>
-                </tr>
-                </thead>
-                <tbody>
-                    {coffeeTable}
-                </tbody>
-            </table>
-        </div>
-    )
-}
+export default CoffeeTable;
